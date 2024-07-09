@@ -7,22 +7,25 @@
 // inserts a new variable symbol and its value into the symbol table and the lookUp function returns
 // that value of the supplied variable symbol name.
 
-#include <string>
-#include <vector>
-using namespace std;
-
+// symboltable.cpp
 #include "symboltable.h"
 
-void SymbolTable::insert(string variable, double value)
+void SymbolTable::insert(std::string variable, double value)
 {
-    const Symbol &symbol = Symbol(variable, value);
-    elements.push_back(symbol);
+    symbols[variable] = value;
 }
 
-double SymbolTable::lookUp(string variable) const
+double SymbolTable::lookUp(std::string variable) const
 {
-    for (int i = 0; i < elements.size(); i++)
-        if (elements[i].variable == variable)
-            return elements[i].value;
-    return -1;
+    auto it = symbols.find(variable);
+    if (it == symbols.end())
+    {
+        throw std::runtime_error("Variable '" + variable + "' is uninitialized.");
+    }
+    return it->second;
+}
+
+void SymbolTable::init()
+{
+    symbols.clear(); // Clear all entries in the symbol table
 }

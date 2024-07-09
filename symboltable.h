@@ -7,23 +7,15 @@
 // with a vector (list) of type Symbol which is a pair consisting of a variable and its associated value.
 // The body of its functions are defined in symboltable.cpp.
 
+#include <string>
+#include <unordered_map>
+#include <stdexcept>
 class SymbolTable
 {
 public:
-    SymbolTable() {}
-    void insert(string variable, double value);
-    double lookUp(string variable) const;
-
+    void insert(std::string variable, double value);
+    double lookUp(std::string variable) const;
+    void init(); // Add this method to initialize (clear) the symbol table
 private:
-    struct Symbol
-    {
-        Symbol(string variable, double value)
-        {
-            this->variable = variable;
-            this->value = value;
-        }
-        string variable;
-        double value;
-    };
-    vector<Symbol> elements;
+    std::unordered_map<std::string, double> symbols;
 };

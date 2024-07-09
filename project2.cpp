@@ -41,7 +41,7 @@ int main()
 		cout << line << " ";
 		try
 		{
-			// symbolTable.init(); // Initialize (clear) the symbol table
+			symbolTable.init(); // Initialize (clear) the symbol table
 			expression = SubExpression::parse(in);
 			in >> comma;
 			parseAssignments(in);
@@ -53,7 +53,7 @@ int main()
 			cout << "Error: " << e.what() << endl;
 		}
 	}
-	system("pause");
+	// system("pause");
 	return 0;
 }
 

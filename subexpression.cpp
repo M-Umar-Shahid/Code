@@ -84,5 +84,5 @@ Expression *SubExpression::parse(std::stringstream &in)
             return new Avg(left, right);
         }
     }
-    return 0;
+    return nullptr;
 }

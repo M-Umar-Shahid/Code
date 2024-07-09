@@ -28,18 +28,16 @@ Expression *Operand::parse(std::stringstream &in)
     int value;
 
     in >> ws;
-    if (isdigit(in.peek()))
+    if (isdigit(in.peek()) || in.peek() == '.')
     {
         in >> value;
-        Expression *literal = new Literal(value);
-        return literal;
+        return new Literal(value);
     }
     if (in.peek() == '(')
     {
         in >> paren;
         return SubExpression::parse(in);
     }
-    else
-        return new Variable(parseName(in));
-    return 0;
+
+    return new Variable(parseName(in));
 }

@@ -4,15 +4,15 @@
 // Spring 2023
 
 // This file contains the class definition of the Variable class. The variable is represented by its
-// name, which the construcor initializes. Because this class is a subclass of Operand which in turn is 
+// name, which the construcor initializes. Because this class is a subclass of Operand which in turn is
 // a subclass of Expression, it must implement the function evaluate, whose body is defined in variable.cpp.
 
-class Variable: public Operand {
+class Variable : public Expression
+{
 public:
-    Variable(string name) {
-        this->name = name;
-    }
-    double evaluate();
+    Variable(std::string name) : name(name) {}
+    double evaluate() override;
+
 private:
-    string name;
+    std::string name;
 };

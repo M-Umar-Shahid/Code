@@ -9,16 +9,15 @@
 // which in turn is a subclass of Expression, it must implement the function evaluate, which returns the
 // value that corresponds to the literal.
 
-class Literal : public Operand
+class Literal : public Expression
 {
 public:
-    Literal(double value)
-    {
-        this->value = value;
-    }
-    double evaluate()
+    Literal(double value) : value(value) {}
+    double evaluate() override
     {
         return value;
     }
+
+private:
     double value;
 };
