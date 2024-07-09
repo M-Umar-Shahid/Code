@@ -13,7 +13,6 @@ public:
     SymbolTable() {}
     void insert(string variable, double value);
     double lookUp(string variable) const;
-    // void init();
 
 private:
     struct Symbol

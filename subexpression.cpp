@@ -1,4 +1,12 @@
-// subexpression.cpp
+// CMSC 330 Advanced Programming Languages
+// Project 2 Skeleton
+// UMGC CITE
+// Spring 2023
+
+// This file contains the body of the functions contained in The SubExpression class, which includes
+// the constructor that initializes the left and right subexpressions and the static function parse
+// parses the subexpression. Addition and subtraction are the two operators that are implemented.
+
 #include "subexpression.h"
 #include "operand.h"
 #include "plus.h"
@@ -76,5 +84,5 @@ Expression *SubExpression::parse(std::stringstream &in)
             return new Avg(left, right);
         }
     }
-    return nullptr;
+    return 0;
 }
