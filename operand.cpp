@@ -25,10 +25,10 @@ using namespace std;
 Expression *Operand::parse(std::stringstream &in)
 {
     char paren;
-    int value;
+    double value;
 
-    in >> ws;
-    if (isdigit(in.peek()) || in.peek() == '.')
+    in >> std::ws;                                   // Use std::ws to consume whitespace
+    if (std::isdigit(in.peek()) || in.peek() == '.') // Ensure floating-point handling
     {
         in >> value;
         return new Literal(value);
@@ -38,6 +38,6 @@ Expression *Operand::parse(std::stringstream &in)
         in >> paren;
         return SubExpression::parse(in);
     }
-
-    return new Variable(parseName(in));
+    std::string name = parseName(in);
+    return new Variable(name);
 }
